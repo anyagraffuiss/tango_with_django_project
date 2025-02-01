@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add a Page</title>
+    </head>
+    <body>
+        <h1>Add a Page to {{ category.name }}</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Add Page" />
+        </form>
+        <p><a href="{% url 'rango:show_category' category.name %}">Back to {{category.name}}</a></p>
+    </body>
+</html>
