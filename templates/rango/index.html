@@ -1,29 +1,27 @@
+{% extends 'rango/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-    <head>
-        <title> Rango </title>
-    </head>
-    <body>
-        <h1>Rango says...</h1>
-        <div>
-            <p>Here are the top categories:</p>
-           <br> <strong>{{ boldmessage }}</strong><br />
-        </div>
-        <!-- display list of categories -->
-         <ul>
-            {% for category in categories %}
-            <li>
-                <a href = "{% url 'rango:show_category' category.name %}">{{ category.name }}</a>
-            </li>
-            {% empty %}
-            <li> No categories available.</li>
-            {% endfor %}
-         </ul>
-         <div>
-            <a href="/rango/about/">About</a><br />
-            <img src="{% static 'images/rango.jpg' %}" alt="Picture of Rango" />
-        </div>
+{% block body_block %}
 
-    </body>
-</html>
+<h1>Rango says...</h1>
+<div>
+    <p>Here are the top categories:</p>
+    <br> <strong>{{ boldmessage }}</strong><br />
+</div>
+<!-- show the number of visits -->
+ <p>You have visited this page {{ visits }} times.</p>
+<!-- display list of categories -->
+<ul>
+    {% for category in categories %}
+    <li>
+        <a href = "{% url 'rango:show_category' category.name %}">{{ category.name }}</a>
+    </li>
+    {% empty %}
+    <li> No categories available.</li>
+    {% endfor %}
+    </ul>
+
+    <div>
+        <a href="{% url 'rango:about' %}">About</a><br />
+        <img src="{% static 'images/rango.jpg' %}" alt="Picture of Rango" />
+    </div>
+    {% endblock %}

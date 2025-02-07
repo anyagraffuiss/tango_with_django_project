@@ -23,4 +23,6 @@ urlpatterns = [
     path('', views.index, name ='index'), # map the root URL to the index view
     path('rango/', include('rango.urls')), # delegates 'rango/' URLs to the app
     path('admin/', admin.site.urls),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
