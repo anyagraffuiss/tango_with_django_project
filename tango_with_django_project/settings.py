@@ -133,3 +133,6 @@ MEDIA_URL = '/media/'
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
 SESSION_COOKIE_AGE = 300
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# Redirect unauthenticated users to this login page
+LOGIN_URL = '/rango/login/'
